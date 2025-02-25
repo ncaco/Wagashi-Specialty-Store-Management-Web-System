@@ -1,0 +1,41 @@
+from sqlalchemy import Column, Integer, String, DateTime, CHAR, ForeignKey
+from datetime import datetime
+from ..database import Base
+
+class AccountDetailInfo(Base):
+    __tablename__ = 'ACNT_DTL_INFO'
+
+    DTL_SN = Column(Integer, primary_key=True)
+    ACNT_SN = Column(Integer, ForeignKey('ACNT_INFO.ACNT_SN'))
+    KORN_FLNM = Column(String(100))
+    ENG_FLNM = Column(String(100))
+    HAN_FLNM = Column(String(100))
+    KORN_NM = Column(String(100))
+    ENG_NM = Column(String(100))
+    HAN_NM = Column(String(100))
+    BRDT = Column(CHAR(8))
+    SFX_RRNO_ENCPT_NM = Column(String(200))
+    GNDR_CD = Column(CHAR(4))
+    MBL_TELNO = Column(String(11))
+    TELNO = Column(String(11))
+    FXNO = Column(String(11))
+    NTN_CD = Column(CHAR(3))
+    HOME_ADDR = Column(String(200))
+    DADDR = Column(String(200))
+    ZIP = Column(CHAR(5))
+    PRFX_EML_AGRE_ADDR = Column(String(200))
+    SFX_EML_AGRE_ADDR = Column(String(200))
+    PRVC_CLCT_AGRE_YN = Column(CHAR(1))
+    PRVC_CLCT_AGRE_DT = Column(DateTime)
+    TP_INFO_PVSN_AGRE_YN = Column(CHAR(1))
+    TP_INFO_PVSN_AGRE_DT = Column(DateTime)
+    SMS_RCPTN_AGRE_YN = Column(CHAR(1))
+    SMS_RCPTN_AGRE_DT = Column(DateTime)
+    EML_RCPTN_AGRE_YN = Column(CHAR(1))
+    EML_RCPTN_AGRE_DT = Column(DateTime)
+    FRST_KBRDR_ID = Column(String(200))
+    FRST_KBRDR_NM = Column(String(100))
+    FRST_INPT_DT = Column(DateTime, nullable=False)
+    LAST_MDFR_ID = Column(String(200))
+    LAST_MDFR_NM = Column(String(100))
+    LAST_MDFCN_DT = Column(DateTime) 
