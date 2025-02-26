@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, DateTime, CHAR, ForeignKey
 from datetime import datetime
 from ..database import Base
 
-class MenuInfo(Base):
+class MenuInfoVo(Base):
     __tablename__ = 'MENU_INFO'
 
     MENU_SN = Column(Integer, primary_key=True)
