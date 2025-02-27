@@ -7,6 +7,7 @@ from . import database
 from pydantic import BaseModel
 from datetime import datetime
 from typing import List
+from .routers import account, menu
 
 # 데이터베이스 테이블 생성
 models.Base.metadata.create_all(bind=database.engine)
@@ -27,7 +28,8 @@ app.add_middleware(
 )
 
 # 라우터 등록
-#app.include_router(accounts.router)
+app.include_router(account.router)
+app.include_router(menu.router)
 
 # Pydantic 모델
 class AdminResponse(BaseModel):
