@@ -4,10 +4,28 @@ from sqlalchemy.orm import Session
 
 from .models import models
 from . import database
+from .routers.AcntDtlRouter import router as account_detail_router
+from .routers.AcntRouter import router as account_router
+from .routers.AcntProfRouter import router as account_profile_router
+from .routers.AcntPswordRouter import router as account_password_router
+from .routers.CrtfctRouter import router as certificate_router
+from .routers.MenuRouter import router as menu_router
+from .routers.PrgrmRouter import router as program_router
+from .routers.SiteRouter import router as site_router
+from .routers.SysAnsRouter import router as system_answer_router
+from .routers.SysAtchFileRouter import router as system_attachment_router
+from .routers.SysAuthrtDtlRouter import router as system_authority_detail_router
+from .routers.SysAuthrtRouter import router as system_authority_router
+from .routers.SysCmnCdRouter import router as system_common_code_router
+from .routers.SysBbsRouter import router as system_board_router
+from .routers.SysCntsRouter import router as system_content_router
+from .routers.SysCtgryRouter import router as system_category_router
+from .routers.SysPstRouter import router as system_post_router
+
 from pydantic import BaseModel
 from datetime import datetime
 from typing import List
-from .routers import account, menu
+
 
 # 데이터베이스 테이블 생성
 models.Base.metadata.create_all(bind=database.engine)
@@ -28,8 +46,22 @@ app.add_middleware(
 )
 
 # 라우터 등록
-app.include_router(account.router)
-app.include_router(menu.router)
+app.include_router(account_router)
+app.include_router(account_detail_router)
+app.include_router(account_profile_router)
+app.include_router(account_password_router)
+app.include_router(certificate_router)
+app.include_router(menu_router)
+app.include_router(program_router)
+app.include_router(site_router)
+app.include_router(system_answer_router)
+app.include_router(system_attachment_router)
+app.include_router(system_authority_detail_router)
+app.include_router(system_authority_router)
+app.include_router(system_common_code_router)
+app.include_router(system_board_router)
+app.include_router(system_content_router)
+app.include_router(system_category_router)
 
 # Pydantic 모델
 class AdminResponse(BaseModel):
