@@ -5,10 +5,15 @@ import uvicorn
 from database import Base, engine, init_db, get_db
 
 # 시스템 정보 라우터
+from _sys._authrt.sysAuthrtInfoRouter import router as sysAuthrtInfoRouter
+from _sys._authrt._dtl.sysAuthrtDtlInfoRouter import router as sysAuthrtDtlInfoRouter
+from _sys._bbs._pst.sysPstInfoRouter import router as sysPstInfoRouter
+from _sys._bbs.sysBbsInfoRouter import router as sysBbsInfoRouter
+from _sys._cmnCd.sysCmnCdInfoRouter import router as sysCmnCdInfoRouter
+from _sys._cnts.sysCntsInfoRouter import router as sysCntsInfoRouter
 from _sys._ctgry.sysCtgryInfoRouter import router as sysCtgryInfoRouter
 from _sys._menu.sysMenuInfoRouter import router as sysMenuInfoRouter
 from _sys._prgrm.sysPrgrmInfoRouter import router as sysPrgrmInfoRouter
-from _sys._pst.sysPstInfoRouter import router as sysPstInfoRouter
 from _sys._site.sysSiteInfoRouter import router as sysSiteInfoRouter
 
 from pydantic import BaseModel
@@ -35,10 +40,15 @@ app.add_middleware(
 )
 
 # 라우터 등록
+app.include_router(sysAuthrtInfoRouter)
+app.include_router(sysAuthrtDtlInfoRouter)
+app.include_router(sysPstInfoRouter)
+app.include_router(sysBbsInfoRouter)
+app.include_router(sysCmnCdInfoRouter)
+app.include_router(sysCntsInfoRouter)
 app.include_router(sysCtgryInfoRouter)
 app.include_router(sysMenuInfoRouter)
 app.include_router(sysPrgrmInfoRouter)
-app.include_router(sysPstInfoRouter)
 app.include_router(sysSiteInfoRouter)
 
 # Pydantic 모델

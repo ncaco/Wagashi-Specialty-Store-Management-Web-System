@@ -8,7 +8,7 @@ from .sysPrgrmInfoModel import SysPrgrmInfo
 
 router = APIRouter(
     prefix="/sysPrgrmInfo",
-    tags=["SYS_PRGRM_INFO"]
+    tags=["프로그램 관련"]
 )
 
 class SysPrgrmInfoBase(BaseModel):
