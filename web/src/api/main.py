@@ -3,7 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import uvicorn
 from database import Base, engine, init_db, get_db
-from sysInfo.site.sysSiteInfoRouter import router as site_router
+
+# 시스템 정보 라우터
+from _sys._ctgry.sysCtgryInfoRouter import router as sysCtgryInfoRouter
+from _sys._menu.sysMenuInfoRouter import router as sysMenuInfoRouter
+from _sys._prgrm.sysPrgrmInfoRouter import router as sysPrgrmInfoRouter
+from _sys._pst.sysPstInfoRouter import router as sysPstInfoRouter
+from _sys._site.sysSiteInfoRouter import router as sysSiteInfoRouter
 
 from pydantic import BaseModel
 from datetime import datetime
@@ -29,7 +35,11 @@ app.add_middleware(
 )
 
 # 라우터 등록
-app.include_router(site_router)
+app.include_router(sysCtgryInfoRouter)
+app.include_router(sysMenuInfoRouter)
+app.include_router(sysPrgrmInfoRouter)
+app.include_router(sysPstInfoRouter)
+app.include_router(sysSiteInfoRouter)
 
 # Pydantic 모델
 class AdminResponse(BaseModel):
