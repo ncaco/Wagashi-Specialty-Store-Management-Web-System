@@ -5,8 +5,10 @@ import uvicorn
 from database import Base, engine, init_db, get_db
 
 # 시스템 정보 라우터
+from _sys._atchFile.sysAtchFileInfoRouter import router as sysAtchFileInfoRouter
 from _sys._authrt.sysAuthrtInfoRouter import router as sysAuthrtInfoRouter
 from _sys._authrt._dtl.sysAuthrtDtlInfoRouter import router as sysAuthrtDtlInfoRouter
+from _sys._bbs._ans.sysAnsInfoRouter import router as sysAnsInfoRouter
 from _sys._bbs._pst.sysPstInfoRouter import router as sysPstInfoRouter
 from _sys._bbs.sysBbsInfoRouter import router as sysBbsInfoRouter
 from _sys._cmnCd.sysCmnCdInfoRouter import router as sysCmnCdInfoRouter
@@ -40,8 +42,10 @@ app.add_middleware(
 )
 
 # 라우터 등록
+app.include_router(sysAtchFileInfoRouter)
 app.include_router(sysAuthrtInfoRouter)
 app.include_router(sysAuthrtDtlInfoRouter)
+app.include_router(sysAnsInfoRouter)
 app.include_router(sysPstInfoRouter)
 app.include_router(sysBbsInfoRouter)
 app.include_router(sysCmnCdInfoRouter)
