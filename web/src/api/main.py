@@ -4,7 +4,15 @@ from sqlalchemy.orm import Session
 import uvicorn
 from database import Base, engine, init_db, get_db
 
-# 시스템 정보 라우터
+# 라우터 등록
+## 표준 정보 라우터
+from _std._col.stdColInfoRouter import router as stdColInfoRouter
+from _std._dom.stdDomInfoRouter import router as stdDomInfoRouter
+from _std._tbl.stdTblInfoRouter import router as stdTblInfoRouter
+from _std._vocab.stdVocabInfoRouter import router as stdVocabInfoRouter
+from _std._wd.stdWdInfoRouter import router as stdWdInfoRouter
+
+## 시스템 정보 라우터
 from _sys._atchFile.sysAtchFileInfoRouter import router as sysAtchFileInfoRouter
 from _sys._authrt.sysAuthrtInfoRouter import router as sysAuthrtInfoRouter
 from _sys._authrt._dtl.sysAuthrtDtlInfoRouter import router as sysAuthrtDtlInfoRouter
@@ -42,6 +50,14 @@ app.add_middleware(
 )
 
 # 라우터 등록
+## 표준 정보 라우터
+app.include_router(stdColInfoRouter)
+app.include_router(stdDomInfoRouter)
+app.include_router(stdTblInfoRouter)
+app.include_router(stdVocabInfoRouter)
+app.include_router(stdWdInfoRouter)
+
+## 시스템 정보 라우터
 app.include_router(sysAtchFileInfoRouter)
 app.include_router(sysAuthrtInfoRouter)
 app.include_router(sysAuthrtDtlInfoRouter)
@@ -65,18 +81,6 @@ class AdminResponse(BaseModel):
 
     class Config:
         from_attributes = True
-
-@app.get("/admins/", response_model=List[AdminResponse])
-def get_admins(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    admins = db.query(Base.Admin).offset(skip).limit(limit).all()
-    return admins
-
-@app.get("/admins/{admin_id}", response_model=AdminResponse)
-def get_admin(admin_id: int, db: Session = Depends(get_db)):
-    admin = db.query(Base.Admin).filter(Base.Admin.id == admin_id).first()
-    if admin is None:
-        raise HTTPException(status_code=404, detail="관리자를 찾을 수 없습니다")
-    return admin
 
 @app.get("/")
 async def root():
