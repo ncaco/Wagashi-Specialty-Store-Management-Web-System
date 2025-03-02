@@ -23,6 +23,10 @@ class StdVocabInfo(Base):
     LAST_MDFR_NM = Column(String(100), comment="최종수정자명")
     LAST_MDFCN_DT = Column(DateTime, comment="최종수정일시")
 
+    # Relationships
+    domain = relationship("StdDomInfo", foreign_keys=[STD_DOM_CLSF_NM, STD_DOM_CD_NM], back_populates="vocabularies")
+    columns = relationship("StdColInfo", back_populates="vocabulary")
+
     __table_args__ = (
         ForeignKeyConstraint(
             ['STD_DOM_CLSF_NM', 'STD_DOM_CD_NM'],
@@ -30,7 +34,10 @@ class StdVocabInfo(Base):
             onupdate="NO ACTION",
             ondelete="NO ACTION"
         ),
-    )
-
-    # Relationships
-    domain = relationship("StdDomInfo", foreign_keys=[STD_DOM_CLSF_NM, STD_DOM_CD_NM]) 
+        {
+            'mysql_engine': 'InnoDB',
+            'mysql_charset': 'utf8mb4',
+            'mysql_collate': 'utf8mb4_general_ci',
+            'comment': '표준 용어 정보'
+        }
+    ) 

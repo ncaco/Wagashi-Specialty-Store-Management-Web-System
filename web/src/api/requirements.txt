@@ -9,3 +9,4 @@ requests==2.31.0
 PyJWT==2.8.0
 httpx==0.26.0
 APScheduler==3.10.4
+python-multipart==0.0.11

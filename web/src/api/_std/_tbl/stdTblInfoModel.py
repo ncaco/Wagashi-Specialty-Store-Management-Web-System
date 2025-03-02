@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.orm import relationship
 from datetime import datetime
 from database import Base
 
@@ -17,8 +18,12 @@ class StdTblInfo(Base):
     LAST_MDFR_NM = Column(String(100), comment="최종수정자명")
     LAST_MDFCN_DT = Column(DateTime, comment="최종수정일시")
 
-    __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_general_ci'},
-        {'comment': '표준 테이블 정보'},
-        {'unique_constraint': ('TBL_LOGIC_NM', 'TBL_PHYS_NM')}
-    ) 
+    # Relationships
+    columns = relationship("StdColInfo", back_populates="table")
+
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4',
+        'mysql_collate': 'utf8mb4_general_ci',
+        'comment': '표준 테이블 정보'
+    } 

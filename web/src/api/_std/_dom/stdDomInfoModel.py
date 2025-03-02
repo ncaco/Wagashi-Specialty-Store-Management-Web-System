@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, DateTime, CHAR
+from sqlalchemy import Column, Integer, String, DateTime, CHAR, UniqueConstraint
+from sqlalchemy.orm import relationship
 from datetime import datetime
 from database import Base
 
@@ -26,8 +27,15 @@ class StdDomInfo(Base):
     LAST_MDFR_NM = Column(String(100), comment="최종수정자명")
     LAST_MDFCN_DT = Column(DateTime, comment="최종수정일시")
 
+    # Relationships
+    vocabularies = relationship("StdVocabInfo", back_populates="domain")
+
     __table_args__ = (
-        {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_general_ci'},
-        {'comment': '표준 도메인 정보'},
-        {'unique_constraint': ('STD_DOM_CLSF_NM', 'STD_DOM_CD_NM')}
+        UniqueConstraint('STD_DOM_CLSF_NM', 'STD_DOM_CD_NM', name='STD_DOM_INFO_UNIQUE'),
+        {
+            'mysql_engine': 'InnoDB',
+            'mysql_charset': 'utf8mb4',
+            'mysql_collate': 'utf8mb4_general_ci',
+            'comment': '표준 도메인 정보'
+        }
     ) 
