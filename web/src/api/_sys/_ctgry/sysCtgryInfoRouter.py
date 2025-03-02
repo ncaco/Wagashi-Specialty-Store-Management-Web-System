@@ -8,7 +8,7 @@ from .sysCtgryInfoModel import SysCtgryInfo
 
 router = APIRouter(
     prefix="/sysCtgryInfo",
-    tags=["카테고리 관련"]
+    tags=["SYS_CTGRY_INFO"]
 )
 
 class SysCtgryInfoBase(BaseModel):

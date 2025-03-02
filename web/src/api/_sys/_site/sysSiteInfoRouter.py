@@ -8,7 +8,7 @@ from .sysSiteInfoModel import SysSiteInfo
 
 router = APIRouter(
     prefix="/sysSiteInfo",
-    tags=["사이트 관련"]
+    tags=["SYS_SITE_INFO"]
 )
 
 class SysSiteInfoBase(BaseModel):

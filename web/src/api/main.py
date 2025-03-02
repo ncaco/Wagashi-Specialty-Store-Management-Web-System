@@ -35,9 +35,37 @@ from typing import List
 init_db()
 
 app = FastAPI(
-    title="Fast API",
+    title="와가시 전문점 관리 시스템 API",
     description="Fast API",
-    version="1.0.0"
+    version="1.0.0",
+    openapi_tags=[
+        {
+            "name": "표준 관련",
+            "description": "표준 정보 관리",
+            "tags": [
+                {"name": "STD_COL_INFO", "description": "표준 컬럼 관련"},
+                {"name": "STD_DOM_INFO", "description": "표준 도메인 관련"},
+                {"name": "STD_TBL_INFO", "description": "표준 테이블 관련"},
+                {"name": "STD_VOCAB_INFO", "description": "표준 용어 관련"},
+                {"name": "STD_WD_INFO", "description": "표준 단어 관련"}
+            ]
+        },
+        {
+            "name": "시스템 관련",
+            "description": "시스템 정보 관리",
+            "tags": [
+                {"name": "첨부파일 관련", "description": "첨부파일 관리"},
+                {"name": "권한 관련", "description": "권한 및 권한상세 관리"},
+                {"name": "게시판 관련", "description": "게시판 및 게시물 관리"},
+                {"name": "공통코드 정보", "description": "공통코드 관리"},
+                {"name": "콘텐츠 관련", "description": "콘텐츠 관리"},
+                {"name": "카테고리 관련", "description": "카테고리 관리"},
+                {"name": "메뉴 관련", "description": "메뉴 관리"},
+                {"name": "프로그램 관련", "description": "프로그램 관리"},
+                {"name": "사이트 관련", "description": "사이트 관리"}
+            ]
+        }
+    ]
 )
 
 # CORS 설정

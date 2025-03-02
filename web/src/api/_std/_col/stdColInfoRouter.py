@@ -8,7 +8,7 @@ from .stdColInfoModel import StdColInfo
 
 router = APIRouter(
     prefix="/stdColInfo",
-    tags=["STD_COL_INFO"]
+    tags=["표준 관련/표준 컬럼 관련"]
 )
 
 class StdColInfoBase(BaseModel):

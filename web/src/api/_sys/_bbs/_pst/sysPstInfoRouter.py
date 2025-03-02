@@ -8,7 +8,7 @@ from .sysPstInfoModel import SysPstInfo
 
 router = APIRouter(
     prefix="/sysPstInfo",
-    tags=["게시판 관련"]
+    tags=["SYS_PST_INFO"]
 )
 
 class SysPstInfoBase(BaseModel):

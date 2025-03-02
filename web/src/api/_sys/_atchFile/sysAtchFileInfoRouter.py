@@ -10,7 +10,7 @@ from .sysAtchFileInfoModel import SysAtchFileInfo
 
 router = APIRouter(
     prefix="/sysAtchFileInfo",
-    tags=["첨부파일 관련"]
+    tags=["시스템 관련/첨부파일 관리"]
 )
 
 class SysAtchFileInfoBase(BaseModel):

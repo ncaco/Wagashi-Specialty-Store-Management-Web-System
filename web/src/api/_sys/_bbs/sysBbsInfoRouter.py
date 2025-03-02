@@ -8,7 +8,7 @@ from .sysBbsInfoModel import SysBbsInfo
 
 router = APIRouter(
     prefix="/sysBbsInfo",
-    tags=["게시판 관련"]
+    tags=["SYS_BBS_INFO"]
 )
 
 class SysBbsInfoBase(BaseModel):

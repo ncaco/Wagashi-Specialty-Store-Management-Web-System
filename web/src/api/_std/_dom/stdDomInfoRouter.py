@@ -8,7 +8,7 @@ from .stdDomInfoModel import StdDomInfo
 
 router = APIRouter(
     prefix="/stdDomInfo",
-    tags=["STD_DOM_INFO"]
+    tags=["표준 관련/표준 도메인 관련"]
 )
 
 class StdDomInfoBase(BaseModel):

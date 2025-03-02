@@ -8,7 +8,7 @@ from .sysCmnCdInfoModel import SysCmnCdInfo
 
 router = APIRouter(
     prefix="/sysCmnCdInfo",
-    tags=["공통코드 정보"]
+    tags=["SYS_CMN_CD_INFO"]
 )
 
 class SysCmnCdInfoBase(BaseModel):
