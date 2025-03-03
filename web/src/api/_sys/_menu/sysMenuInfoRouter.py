@@ -8,7 +8,7 @@ from .sysMenuInfoModel import SysMenuInfo
 
 router = APIRouter(
     prefix="/sysMenuInfo",
-    tags=["SYS_MENU_INFO"]
+    tags=["시스템 관련/메뉴 관련"]
 )
 
 class SysMenuInfoBase(BaseModel):

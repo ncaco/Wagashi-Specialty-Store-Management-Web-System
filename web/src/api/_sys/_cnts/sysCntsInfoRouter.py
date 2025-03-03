@@ -8,7 +8,7 @@ from .sysCntsInfoModel import SysCntsInfo
 
 router = APIRouter(
     prefix="/sysCntsInfo",
-    tags=["SYS_CNT_INFO"]
+    tags=["시스템 관련/콘텐츠 관련"]
 )
 
 class SysCntsInfoBase(BaseModel):

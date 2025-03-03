@@ -8,7 +8,7 @@ from .stdVocabInfoModel import StdVocabInfo
 
 router = APIRouter(
     prefix="/stdVocabInfo",
-    tags=["STD_VOCAB_INFO"]
+    tags=["표준 관련/표준 용어 관련"]
 )
 
 class StdVocabInfoBase(BaseModel):

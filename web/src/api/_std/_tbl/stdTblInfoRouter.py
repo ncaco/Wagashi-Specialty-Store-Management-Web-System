@@ -8,7 +8,7 @@ from .stdTblInfoModel import StdTblInfo
 
 router = APIRouter(
     prefix="/stdTblInfo",
-    tags=["STD_TBL_INFO"]
+    tags=["표준 관련/표준 테이블 관련"]
 )
 
 class StdTblInfoBase(BaseModel):

@@ -8,7 +8,7 @@ from .sysAnsInfoModel import SysAnsInfo
 
 router = APIRouter(
     prefix="/sysAnsInfo",
-    tags=["SYS_ANS_INFO"]
+    tags=["시스템 관련/답변 관련"]
 )
 
 class SysAnsInfoBase(BaseModel):

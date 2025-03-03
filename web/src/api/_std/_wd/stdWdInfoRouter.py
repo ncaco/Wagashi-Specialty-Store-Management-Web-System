@@ -9,7 +9,7 @@ from .stdWdInfoModel import StdWdInfo
 
 router = APIRouter(
     prefix="/stdWdInfo",
-    tags=["STD_WD_INFO"]
+    tags=["표준 관련/표준 단어 관련"]
 )
 
 class StdWdInfoBase(BaseModel):

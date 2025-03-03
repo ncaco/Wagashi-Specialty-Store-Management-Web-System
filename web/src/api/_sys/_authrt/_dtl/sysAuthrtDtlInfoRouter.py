@@ -8,7 +8,7 @@ from .sysAuthrtDtlInfoModel import SysAuthrtDtlInfo
 
 router = APIRouter(
     prefix="/sysAuthrtDtlInfo",
-    tags=["SYS_AUTHRT_DTL_INFO"]
+    tags=["시스템 관련/권한상세 관련"]
 )
 
 class SysAuthrtDtlInfoBase(BaseModel):
